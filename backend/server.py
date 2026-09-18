@@ -191,6 +191,7 @@ async def warning_log(limit: int = 30):
 
 
 DOC_PATH = ROOT_DIR / "docs" / "Hotel_Dynamic_Pricing_Simulator_Documentation.docx"
+DECK_PATH = ROOT_DIR / "docs" / "Hotel_Dynamic_Pricing_Simulator_Deck.pptx"
 
 
 @api.get("/docs/documentation")
@@ -202,6 +203,18 @@ async def download_documentation():
         path=str(DOC_PATH),
         filename=DOC_PATH.name,
         media_type="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    )
+
+
+@api.get("/docs/deck")
+async def download_deck():
+    if not DECK_PATH.exists():
+        raise HTTPException(status_code=404, detail="Deck not generated")
+    from fastapi.responses import FileResponse
+    return FileResponse(
+        path=str(DECK_PATH),
+        filename=DECK_PATH.name,
+        media_type="application/vnd.openxmlformats-officedocument.presentationml.presentation",
     )
 
 

@@ -35,6 +35,12 @@ Scenario inputs + 4 shock presets · 365-day seeded forecast + 14-day chart · b
 - Served via `GET /api/docs/documentation` and downloadable from the header ("Documentation" link, `data-testid=download-documentation-link`)
 - App logic unchanged by this work
 
+## Implemented (2026-06, iteration 4 — projection slide deck)
+- Generated `Hotel_Dynamic_Pricing_Simulator_Deck.pptx` — a 12-slide editable PowerPoint (16:9, dark Obsidian/Champagne-Gold theme matching the app): Title → Problem → Four Zones → Pricing engine → Worked example → Customer model → Monte Carlo → Forecast & pace → Guardrails & audit → AI layer + Presenter Mode → **Contributions (8 members mapped to project areas)** → Thank You
+- Contributions slide auto-maps 8 placeholder members (Member 1–8) to real project areas (Optimizer, Demand model, Monte Carlo, Forecast/Pace, Guardrails/Audit, AI layer, Frontend/Presenter, Documentation) — names editable in `/app/docs/build_deck.py`
+- Build script `/app/docs/build_deck.py` (python-pptx) reuses figures in `/app/docs/img/`; served via `GET /api/docs/deck` and downloadable from the header ("Slide Deck" link, `data-testid=download-deck-link`)
+- Verified: 12 slides, endpoint HTTP 200 (pptx MIME), all slides render clean (no overflow/overlap) via LibreOffice→PDF layout review
+
 ## Backlog
 - P1: Runs history drawer (list saved runs, reload scenario)
 - P2: USD toggle
